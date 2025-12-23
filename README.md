@@ -1,45 +1,55 @@
-# 🌐 Estructura del Proyecto Web - Sitio Informativo Veterinaria
+# 📁 Estructura del Sistema de Gestión Veterinaria
 
 ## 🗂️ Organización Completa del Proyecto
 ```
-📦 Web/
+📦 Sistema/
 │
-├── 📂 app/                          # 🔧 Backend Mínimo
-│   └── 📂 Http/                     # ⚠️ Casi vacío (No usa Controllers)
+├── 📂 app/                          # 🔧 Lógica del Back-end
+│   ├── 📂 Http/
+│   │   ├── 📂 Controllers/          # 🎮 Controladores (Lógica de negocio)
+│   │   └── 📂 Middleware/           # 🔒 Filtros de peticiones y seguridad
+│   ├── 📂 Models/                   # 🗄️ Modelos de Base de Datos (Eloquent ORM)
+│   └── 📂 Providers/                # ⚙️ Proveedores de servicios del sistema
 │
-├── 📂 resources/                    # 🎨 Núcleo del Proyecto (90% del código)
-│   └── 📂 views/                    # 📄 Vistas Blade (Frontend completo)
-│       ├── 📂 layouts/              # 🏗️ Plantillas base (Header, Footer, Nav)
-│       ├── 📂 components/           # 🧩 Componentes reutilizables (Cards, Botones, Modales)
-│       ├── 📂 inicio/               # 🏠 Landing Page (Página principal)
-│       ├── 📂 nosotros/             # 👥 Páginas informativas (Equipo, Historia, Galería)
-│       ├── 📂 servicios/            # 💉 Catálogo de servicios (Cirugía, Vacunas, Consultas)
-│       ├── 📂 productos/            # 🛒 Catálogo de tienda (Alimentos, Accesorios)
-│       ├── 📂 citas/                # 📅 Sistema de agendamiento (Frontend)
-│       ├── 📂 blog/                 # 📰 Noticias y artículos veterinarios
-│       └── 📂 contacto/             # 📧 Formularios de contacto y ubicación
+├── 📂 resources/                    # 🎨 Recursos del Front-end
+│   └── 📂 views/                    # 📄 Plantillas Blade (HTML dinámico)
+│       ├── 📂 layouts/              # 🏗️ Plantillas base (Master layouts)
+│       ├── 📂 admin/                # 👨‍💼 Vistas del Administrador
+│       ├── 📂 veterinario/          # 👨‍⚕️ Vistas del Veterinario
+│       ├── 📂 recepcionista/        # 👩‍💼 Vistas del Recepcionista
+│       ├── 📂 vendedor/             # 🛒 Vistas del Vendedor
+│       ├── 📂 auth/                 # 🔐 Autenticación (login, registro, recuperación)
+│       ├── 📂 profile/              # 👤 Perfil de usuario
+│       └── 📂 errors/               # ⚠️ Páginas de error (404, 500, etc.)
 │
-├── 📂 public/                       # 🌐 Archivos públicos accesibles
+├── 📂 public/                       # 🌐 Archivos accesibles públicamente
 │   ├── 📄 index.php                 # 🚀 Punto de entrada de la aplicación
-│   ├── 📂 css/                      # 🎨 Hojas de estilo por módulo
-│   ├── 📂 js/                       # ⚡ Scripts JavaScript (Menús, Sliders, Validaciones)
-│   ├── 📂 images/                   # 🖼️ Imágenes, logos, banners
-│   └── 📂 assets/                   # 📦 Recursos adicionales (Iconos, fuentes)
+│   ├── 📂 css/                      # 🎨 Hojas de estilo (organizadas por módulos)
+│   ├── 📂 js/                       # ⚡ Scripts JavaScript (organizados por módulos)
+│   ├── 📂 images/                   # 🖼️ Imágenes y recursos gráficos públicos
+│   └── 📂 uploads/                  # 📤 Archivos subidos por usuarios
 │
-├── 📂 routes/                       # 🛣️ Definición de rutas
-│   └── 📄 web.php                   # 🌐 Todas las URLs → Vistas directas (sin Controllers)
+├── 📂 routes/                       # 🛣️ Definición de rutas del sistema
+│   └── 📄 web.php                   # 🌐 Rutas web y navegación de la aplicación
 │
-├── 📂 database/                     # 💾 Base de datos (Opcional/Mínima)
-│   ├── 📂 migrations/               # 🔄 Estructura de tablas (Blog, Contactos)
-│   └── 📂 seeders/                  # 🌱 Datos iniciales (Servicios, Productos)
+├── 📂 database/                     # 💾 Gestión de Base de Datos
+│   ├── 📂 migrations/               # 🔄 Estructura y versionado de tablas
+│   └── 📂 seeders/                  # 🌱 Datos de prueba e iniciales
 │
-├── 📂 config/                       # ⚙️ Configuración del sistema
-├── 📂 storage/                      # 💿 Almacenamiento temporal
-│   └── 📂 logs/                     # 📋 Registros de errores
+├── 📂 config/                       # ⚙️ Archivos de configuración del sistema
+├── 📂 tests/                        # 🧪 Pruebas unitarias y de integración
+├── 📂 storage/                      # 💿 Almacenamiento (logs, cache, sesiones)
+│   ├── 📂 app/                      # 📦 Archivos generados por la aplicación
+│   ├── 📂 framework/                # 🔧 Cache, sesiones y vistas compiladas
+│   └── 📂 logs/                     # 📋 Archivos de registro (logs)
 │
-├── 📄 .env                          # 🔑 Variables de entorno
-├── 📄 vite.config.js                # ⚡ Configuración de Vite (Build assets)
-├── 📄 tailwind.config.js            # 🎨 Configuración de Tailwind CSS
+├── 📂 vendor/                       # 📚 Dependencias de PHP (Composer)
+│
+├── 📄 .env                          # 🔑 Variables de entorno (DB, claves, configuración)
+├── 📄 .env.example                  # 📋 Ejemplo de configuración de entorno
+├── 📄 composer.json                 # 📦 Gestión de dependencias PHP
+├── 📄 composer.lock                 # 🔒 Versiones exactas de dependencias
+├── 📄 artisan                       # 🔨 CLI de Laravel (comandos de consola)
 ├── 📄 package.json                  # 📦 Dependencias JavaScript (npm)
 └── 📄 README.md                     # 📖 Documentación del proyecto
 ```
@@ -48,62 +58,52 @@
 
 ## 📋 Descripción Detallada de Carpetas
 
-### 🎨 Frontend Principal (resources/views/)
-
-> **💡 Nota**: Este es el corazón del proyecto. El 90% del código vive aquí.
+### 🔧 Backend (app/)
 
 | Carpeta | Descripción |
 |---------|-------------|
-| **layouts/** | 🏗️ Plantillas maestras compartidas (header, footer, navigation, sidebar) |
-| **components/** | 🧩 Componentes reutilizables (tarjetas de servicio, botones, modales, formularios) |
-| **inicio/** | 🏠 Landing page principal (Hero section, testimonios, llamados a la acción) |
-| **nosotros/** | 👥 Páginas institucionales (Quiénes somos, Nuestro equipo, Galería de fotos, Misión y visión) |
-| **servicios/** | 💉 Catálogo completo de servicios veterinarios (Consultas, Cirugía, Vacunación, Emergencias, Grooming) |
-| **productos/** | 🛒 Tienda online (Alimentos, Accesorios, Medicamentos, Juguetes) |
-| **citas/** | 📅 Sistema de agendamiento de citas (Formulario, Confirmación, Política de cancelación) |
-| **blog/** | 📰 Blog informativo (Artículos sobre cuidado animal, consejos veterinarios, noticias) |
-| **contacto/** | 📧 Formularios de contacto, mapa de ubicación, información de sucursales |
+| **Controllers/** | 🎮 Contiene la lógica de negocio y maneja las peticiones HTTP |
+| **Middleware/** | 🔒 Filtros para autenticación, autorización y validación de peticiones |
+| **Models/** | 🗄️ Modelos Eloquent que representan las tablas de la base de datos |
+| **Providers/** | ⚙️ Registro y configuración de servicios del sistema |
+
+### 🎨 Frontend (resources/views/)
+
+| Carpeta | Descripción |
+|---------|-------------|
+| **layouts/** | 🏗️ Plantillas base compartidas (header, footer, sidebar) |
+| **admin/** | 👨‍💼 Dashboard y funcionalidades del administrador |
+| **veterinario/** | 👨‍⚕️ Panel de control para veterinarios (consultas, historiales) |
+| **recepcionista/** | 👩‍💼 Interfaz para gestión de citas y atención al cliente |
+| **vendedor/** | 🛒 Sistema de ventas de productos y servicios |
+| **auth/** | 🔐 Formularios de login, registro y recuperación de contraseña |
+| **profile/** | 👤 Edición de perfil y configuración de usuario |
+| **errors/** | ⚠️ Páginas personalizadas de error (404, 403, 500) |
 
 ### 🌐 Recursos Públicos (public/)
 
-| Carpeta/Archivo | Descripción |
-|-----------------|-------------|
-| **css/** | 🎨 Estilos CSS organizados por sección (inicio.css, servicios.css, blog.css) |
-| **js/** | ⚡ Scripts JavaScript (menús interactivos, sliders, validación de formularios, animaciones) |
-| **images/** | 🖼️ Imágenes del sitio (logos, banners, fotos de servicios, galería) |
-| **assets/** | 📦 Recursos estáticos (iconos SVG, fuentes personalizadas, videos) |
-| **index.php** | 🚀 Punto de entrada de Laravel |
-
-### 🛣️ Enrutamiento (routes/)
-
-| Archivo | Descripción |
+| Carpeta | Descripción |
 |---------|-------------|
-| **web.php** | 🌐 Define todas las rutas del sitio web. **No usa Controllers**, retorna vistas directamente |
+| **css/** | 🎨 Archivos de estilos organizados por módulos y componentes |
+| **js/** | ⚡ Scripts JavaScript organizados por funcionalidad |
+| **images/** | 🖼️ Logos, iconos, banners y recursos gráficos |
+| **uploads/** | 📤 Imágenes de mascotas, documentos y archivos de usuarios |
+| **index.php** | 🚀 Archivo principal que inicia la aplicación Laravel |
 
-**Ejemplo de rutas:**
-```php
-// Ruta directa a vista sin controlador
-Route::get('/', fn() => view('inicio.index'));
-Route::get('/servicios', fn() => view('servicios.index'));
-Route::get('/nosotros', fn() => view('nosotros.equipo'));
-Route::get('/blog', fn() => view('blog.index'));
-Route::post('/contacto', fn() => /* lógica mínima */ );
-```
+### 💾 Base de Datos (database/)
 
----
+| Carpeta | Descripción |
+|---------|-------------|
+| **migrations/** | 🔄 Archivos que definen la estructura de las tablas (versionado) |
+| **seeders/** | 🌱 Scripts para poblar la BD con datos iniciales o de prueba |
 
-## 🔄 Diferencias Clave: **System** vs **Web**
+### 💿 Almacenamiento (storage/)
 
-| Aspecto | 🏥 System (App Gestión) | 🌐 Web (Sitio Informativo) |
-|---------|------------------------|----------------------------|
-| **Arquitectura** | 🎮 MVC Completo (Model-View-Controller) | 🛣️ Router-View (Sin Controllers) |
-| **Lógica de Backend** | ✅ Extensa (Validaciones, Procesamiento de datos, APIs) | ⚠️ Mínima (Solo enrutamiento) |
-| **Base de Datos** | 💾 Intensiva (CRUD completo, relaciones complejas) | 💿 Ligera (Blog, contactos opcionales) |
-| **Propósito** | 🔐 Gestión interna (Admin, Veterinarios, Recepción) | 🌍 Público general (Marketing, información) |
-| **Interactividad** | ⚙️ Backend (PHP procesa todo) | ⚡ Frontend (JavaScript maneja interacciones) |
-| **Rendimiento** | 🐢 Medio (Procesa mucha lógica) | 🚀 Alto (Entrega HTML rápido) |
-| **Usuarios** | 👨‍💼 Staff interno autenticado | 👥 Visitantes públicos anónimos |
-| **Seguridad** | 🔒 Alta (Autenticación, roles, permisos) | 🔓 Básica (Solo protección de formularios) |
+| Carpeta | Descripción |
+|---------|-------------|
+| **app/** | 📦 Archivos generados por la aplicación (PDFs, reportes) |
+| **framework/** | 🔧 Cache del sistema, sesiones y vistas compiladas |
+| **logs/** | 📋 Registros de errores y eventos de la aplicación |
 
 ---
 
@@ -111,169 +111,81 @@ Route::post('/contacto', fn() => /* lógica mínima */ );
 
 | Tecnología | Uso |
 |------------|-----|
-| **Laravel** | 🔧 Framework PHP (solo routing y vistas) |
-| **Blade** | 📄 Motor de plantillas |
-| **Tailwind CSS** | 🎨 Framework CSS utility-first |
-| **Alpine.js** | ⚡ Framework JavaScript ligero para interactividad |
-| **Vite** | ⚡ Build tool para assets (CSS/JS) |
-| **MySQL** | 💾 Base de datos (opcional, solo para blog/contactos) |
+| **Laravel** | 🔧 Framework PHP principal |
+| **MySQL** | 💾 Sistema de gestión de base de datos |
+| **Blade** | 📄 Motor de plantillas de Laravel |
+| **Eloquent ORM** | 🗄️ Mapeo objeto-relacional para la BD |
+| **Bootstrap/Tailwind** | 🎨 Framework CSS para diseño responsive |
+| **JavaScript** | ⚡ Interactividad y validaciones del lado cliente |
+| **Composer** | 📦 Gestor de dependencias PHP |
 
 ---
 
-## 🎯 Páginas Principales del Sitio
+## 🔐 Archivos de Configuración Importantes
 
-### 🏠 Inicio (Landing Page)
-- Hero section con llamado a la acción
-- Servicios destacados
-- Testimonios de clientes
-- Galería de instalaciones
-- Formulario de contacto rápido
+| Archivo | Descripción |
+|---------|-------------|
+| **.env** | 🔑 Variables de entorno (DB, mail, API keys) |
+| **composer.json** | 📦 Definición de dependencias PHP del proyecto |
+| **artisan** | 🔨 Herramienta CLI para comandos de Laravel |
+| **web.php** | 🛣️ Definición de todas las rutas web |
 
-### 💉 Servicios
-- Consulta general
-- Cirugía veterinaria
-- Vacunación y desparasitación
-- Emergencias 24/7
-- Grooming y estética
-- Hospitalización
-- Análisis clínicos
+---
 
-### 🛒 Productos
-- Alimentos premium
-- Accesorios para mascotas
-- Medicamentos
-- Juguetes y entretenimiento
-- Higiene y cuidado
+## 📝 Roles del Sistema
 
-### 📅 Agendar Cita
-- Formulario de solicitud
-- Selección de servicio
-- Selección de fecha/hora
-- Confirmación por email
+| Rol | Funcionalidades Principales |
+|-----|------------------------------|
+| 👨‍💼 **Administrador** | Gestión de usuarios, reportes, configuración del sistema |
+| 👨‍⚕️ **Veterinario** | Historiales clínicos, diagnósticos, recetas |
+| 👩‍💼 **Recepcionista** | Agendamiento de citas, registro de clientes |
+| 🛒 **Vendedor** | Ventas de productos, inventario, facturación |
 
-### 📰 Blog
-- Consejos de salud animal
-- Noticias veterinarias
-- Guías de cuidado
-- Casos de éxito
+---
+
+## 💡 Convenciones de Desarrollo
+
+- ✅ **PSR-4**: Autoloading de clases
+- ✅ **PSR-12**: Estándares de código PHP
+- ✅ **Blade**: Separación de lógica y presentación
+- ✅ **MVC**: Arquitectura Modelo-Vista-Controlador
+- ✅ **RESTful**: Rutas y endpoints bien estructurados
 
 ---
 
 ## 📦 Instalación y Configuración
 ```bash
 # 1. Clonar el repositorio
-git clone <url-del-repositorio-web>
+git clone <url-del-repositorio>
 
-# 2. Instalar dependencias PHP
+# 2. Instalar dependencias
 composer install
 
-# 3. Instalar dependencias JavaScript
-npm install
-
-# 4. Configurar entorno
+# 3. Configurar entorno
 cp .env.example .env
 php artisan key:generate
 
-# 5. Compilar assets (CSS/JS)
-npm run dev          # Desarrollo
-npm run build        # Producción
+# 4. Configurar base de datos en .env
+DB_DATABASE=veterinaria
+DB_USERNAME=root
+DB_PASSWORD=
 
-# 6. Iniciar servidor
+# 5. Ejecutar migraciones
+php artisan migrate
+
+# 6. Poblar base de datos (opcional)
+php artisan db:seed
+
+# 7. Iniciar servidor
 php artisan serve
 ```
 
 ---
 
-## 🎨 Personalización de Estilos
-```bash
-# Tailwind CSS
-# Editar: tailwind.config.js
+## 📞 Contacto y Soporte
 
-# Compilar cambios en tiempo real
-npm run dev
-
-# Producción optimizada
-npm run build
-```
+Para dudas o contribuciones, contactar al equipo de desarrollo.
 
 ---
 
-## 🔧 Flujo de Trabajo Típico
-```
-Usuario visita URL
-      ↓
-routes/web.php detecta ruta
-      ↓
-Retorna vista directamente (sin Controller)
-      ↓
-Blade renderiza HTML + CSS + JS
-      ↓
-JavaScript maneja interactividad
-      ↓
-(Opcional) Llamadas AJAX al System para datos
-```
-
----
-
-## 💡 Convenciones de Desarrollo
-
-- ✅ **Atomic Design**: Componentes reutilizables pequeños
-- ✅ **Mobile First**: Diseño responsive desde móvil
-- ✅ **SEO Optimizado**: Meta tags, URLs amigables
-- ✅ **Performance**: Lazy loading de imágenes
-- ✅ **Accesibilidad**: ARIA labels, contraste adecuado
-
----
-
-## 📊 Métricas de Rendimiento Objetivo
-
-| Métrica | Objetivo |
-|---------|----------|
-| **First Contentful Paint** | < 1.5s |
-| **Time to Interactive** | < 3s |
-| **Lighthouse Score** | > 90/100 |
-| **Tamaño de página** | < 1MB |
-
----
-
-## 📞 Integración con System
-
-Aunque Web es independiente, puede comunicarse con System mediante:
-
-- 📡 **API REST**: Para formularios de contacto/citas
-- 🔗 **Enlaces directos**: Al sistema de gestión (login staff)
-- 📊 **Datos compartidos**: Blog posts desde BD común (opcional)
-
----
-
-## 🛡️ Seguridad Básica
-
-- ✅ **CSRF Protection**: En formularios
-- ✅ **Input Sanitization**: Limpieza de datos de usuario
-- ✅ **Rate Limiting**: Límite de peticiones a formularios
-- ✅ **HTTPS**: Obligatorio en producción
-
----
-
-## 📱 Responsive Design
-
-El sitio está optimizado para:
-- 📱 **Móviles**: 320px - 767px
-- 📱 **Tablets**: 768px - 1023px
-- 💻 **Desktop**: 1024px+
-- 🖥️ **Large Desktop**: 1440px+
-
----
-
-## 🌟 Características Destacadas
-
-- ⚡ **Carga Ultra Rápida**: Sin procesamiento pesado de backend
-- 🎨 **Diseño Moderno**: Tailwind CSS con animaciones sutiles
-- 📱 **100% Responsive**: Perfecto en cualquier dispositivo
-- ♿ **Accesible**: Cumple estándares WCAG 2.1
-- 🔍 **SEO Friendly**: Optimizado para motores de búsqueda
-
----
-
-**🌐 Sitio Web Veterinaria - Versión 1.0**  
-_Diseñado para máximo rendimiento y experiencia de usuario_
+**🏥 Sistema de Gestión Veterinaria - Versión 1.0**
